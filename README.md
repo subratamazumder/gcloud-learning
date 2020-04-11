@@ -1,6 +1,7 @@
 # Google Cloud Learning
 ## Setup
-
+### Guide
+#### Install
 https://cloud.google.com/sdk/docs/quickstart-macos
 
 ```console
@@ -11,6 +12,8 @@ $ gunzip google-cloud-sdk-288.0.0-darwin-x86_64.tar.gz
 $ tar -xvf google-cloud-sdk-288.0.0-darwin-x86_64.tar
 
 $ ./google-cloud-sdk/install.sh
+
+$ gcloud init
 
 ```
 
@@ -46,6 +49,17 @@ Some things to try next:
 * Run `gcloud topic --help` to learn about advanced features of the SDK like arg files and output formatting
 
 ```
+#### Verify Setup
+
+```console
+$ gcloud info
+```
+
+## Reference
+For AWS experts https://cloud.google.com/docs/compare/aws
+
+
+
 
 
 
