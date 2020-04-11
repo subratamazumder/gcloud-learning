@@ -54,6 +54,33 @@ Some things to try next:
 ```console
 $ gcloud info
 ```
+#### Create a new VM with Apache server
+```console
+$ gcloud compute --project=acelearning-273910 instances create instance-2 --zone=us-west1-b --machine-type=g1-small --subnet=default --network-tier=PREMIUM --metadata=startup-script=\#\!\ /bin/bash$'\n'apt-get\ update$'\n'apt-get\ install\ -y\ apache2$'\n'cat\ \<\<EOF\ \>\ /var/www/html/index.html$'\n'\<html\>\<body\>\<h1\>Hello\ World\</h1\>$'\n'\<p\>This\ page\ was\ created\ from\ a\ simple\ startup\ script\!\</p\>$'\n'\</body\>\</html\> --maintenance-policy=MIGRATE --service-account=805266248939-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append --tags=http-server --image=ubuntu-1604-xenial-v20200407 --image-project=ubuntu-os-cloud --boot-disk-size=10GB --boot-disk-type=pd-standard --boot-disk-device-name=instance-2 --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=name=test --reservation-affinity=any
+
+(optional if already created before)
+
+$ gcloud compute --project=acelearning-273910 firewall-rules create default-allow-http --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:80 --source-ranges=0.0.0.0/0 --target-tags=http-server
+```
+Sample output
+```
+WARNING: You have selected a disk size of under [200GB]. This may result in poor I/O performance. For more information, see: https://developers.google.com/compute/docs/disks#performance.
+Created [https://www.googleapis.com/compute/v1/projects/acelearning-273910/zones/us-west1-b/instances/instance-2].
+NAME        ZONE        MACHINE_TYPE  PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP   STATUS
+instance-2  us-west1-b  g1-small                   10.138.0.3   34.82.54.122  RUNNING
+```
+#### Verify VM
+```console
+$ gcloud compute instances list --zones=us-west1-b
+```
+
+
+Open browser and type EXTERNAL_IP's value; A hello world html page should be served by apache server
+
+#### Stop VM
+```console
+$ gcloud compute instances stop instance-2 --zone=us-west1-b --async
+```
 
 ## Reference
 For AWS experts https://cloud.google.com/docs/compare/aws
