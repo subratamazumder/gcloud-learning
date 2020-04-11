@@ -4,13 +4,13 @@
 https://cloud.google.com/sdk/docs/quickstart-macos
 
 ```console
-wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-288.0.0-darwin-x86_64.tar.gz
+$ wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-288.0.0-darwin-x86_64.tar.gz
 
-gunzip google-cloud-sdk-288.0.0-darwin-x86_64.tar.gz
+$ gunzip google-cloud-sdk-288.0.0-darwin-x86_64.tar.gz
 
-tar -xvf google-cloud-sdk-288.0.0-darwin-x86_64.tar
+$ tar -xvf google-cloud-sdk-288.0.0-darwin-x86_64.tar
 
-./google-cloud-sdk/install.sh
+$ ./google-cloud-sdk/install.sh
 
 ```
 
